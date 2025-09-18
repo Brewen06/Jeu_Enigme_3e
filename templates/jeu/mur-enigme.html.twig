@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Démarrage.{% endblock %}
+
+{% block body %}
+
+<div class="max-w-xl mx-auto mt-12 p-8 bg-white rounded-lg shadow-lg">
+    <h1 class="text-3xl font-bold text-blue-600 mb-4 flex items-center gap-2">
+        Bonjour {{ equipe_nom }}!
+    </h1>
+
+    <button type="submit"
+        class="w-full mt-4 py-2 px-4 bg-gradient-to-r from-blue-500 to-red-500 text-white font-semibold rounded-lg shadow-md hover:from-blue-600 hover:to-red-600 transition-colors duration-200">
+        Commencer la partie.
+    </button>
+</div>
+{% endblock %}

@@ -13,6 +13,16 @@ final class JeuController extends AbstractController
     {
         return $this->render('jeu/index.html.twig', [
             'controller_name' => 'JeuController',
+            'equipe_nom' => null,
+        ]);
+    }
+
+    #[Route('/jeu/mur-enigme', name: 'app_choisir_enigme')]
+    public function indexEquipe(string $equipe_nom): Response
+    {
+        return $this->render('jeu/index.html.twig', [
+            'controller_name' => 'JeuController',
+            'equipe_nom' => $equipe_nom,
         ]);
     }
 }

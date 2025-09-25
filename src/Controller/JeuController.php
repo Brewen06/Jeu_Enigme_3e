@@ -2,9 +2,10 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\EquipeRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 final class JeuController extends AbstractController
 {
@@ -17,12 +18,18 @@ final class JeuController extends AbstractController
         ]);
     }
 
-    #[Route('/jeu/mur-enigme', name: 'app_choisir_enigme')]
-    public function indexEquipe(string $equipe_nom): Response
+    #[Route('/jeu/mur-enigme/{id}', name: 'app_choisir_enigme')]
+    public function choisirEnigme(int $id, EquipeRepository $equipeRepository): Response
     {
-        return $this->render('jeu/index.html.twig', [
-            'controller_name' => 'JeuController',
-            'equipe_nom' => $equipe_nom,
-        ]);
+        $equipe = $equipeRepository->find($id);
+
+    if (!$equipe) {
+        throw $this->createNotFoundException("Équipe non trouvée");
+    }
+
+    return $this->render('jeu/mur-enigme.html.twig', [
+        'equipe_nom' => $equipe->getNom(),
+        'id' => $id,
+    ]);
     }
 }

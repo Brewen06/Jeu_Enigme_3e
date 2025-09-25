@@ -16,8 +16,8 @@ class Equipe
     #[ORM\Column(length: 50)]
     private ?string $nom = null;
 
-    #[ORM\Column]
-    private ?int $nombre = null;
+    #[ORM\Column(length: 32)]
+    private ?string $MotDePasse = null;
 
     public function getId(): ?int
     {
@@ -36,14 +36,14 @@ class Equipe
         return $this;
     }
 
-    public function getNombre(): ?int
+    public function getMotDePasse(): ?string
     {
-        return $this->nombre;
+        return $this->MotDePasse;
     }
 
-    public function setNombre(int $nombre): static
+    public function setMotDePasse(string $MotDePasse): static
     {
-        $this->nombre = $nombre;
+        $this->MotDePasse = $MotDePasse;
 
         return $this;
     }

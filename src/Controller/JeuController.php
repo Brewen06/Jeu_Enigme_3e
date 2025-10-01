@@ -28,7 +28,7 @@ final class JeuController extends AbstractController
     {
         return $this->render('jeu/index.html.twig', [
             'controller_name' => 'JeuController',
-            'equipe_nom' => null,
+            'equipe.nom' => null, 
         ]);
     }
 

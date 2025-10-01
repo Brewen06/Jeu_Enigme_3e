@@ -14,7 +14,6 @@ class EquipeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add('nom', TextType::class);
-        $builder->add('MotDePasse', TextType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

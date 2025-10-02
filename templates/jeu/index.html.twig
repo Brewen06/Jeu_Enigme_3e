@@ -10,10 +10,11 @@
     </h1>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <a href="{{ path('app_choisir_enigme')}}{{ id }}"
+    <a href="{{ path('app_choisir_enigme', {'id': equipe.id}) }}"
         class="w-full mt-4 py-2 px-4 bg-gradient-to-r from-blue-500 to-red-500 text-white font-semibold rounded-lg shadow-md hover:from-blue-600 hover:to-red-600 transition-colors duration-200 inline-block text-center">
-        Démarrer 
+        Démarrer
         <i class="fas fa-play ml-2"></i>
     </a>
+
 </div>
 {% endblock %}

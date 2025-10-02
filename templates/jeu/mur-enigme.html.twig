@@ -6,10 +6,10 @@
 
 <div class="max-w-xl mx-auto mt-12 p-8 bg-white rounded-lg shadow-lg">
     <h1 class="text-3xl font-bold text-blue-600 mb-4 flex items-center gap-2">
-        {% if equipe_nom is null %}
+        {% if equipe is null %}
         Bonjour, choisissez votre énigme !
         {% else %}
-        Bonjour {{ equipe_nom }}, choisissez votre énigme !
+        Bonjour {{ equipe }}, choisissez votre énigme !
         {% endif %}
     </h1>
 

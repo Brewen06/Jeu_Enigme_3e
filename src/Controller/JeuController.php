@@ -16,34 +16,36 @@ final class JeuController extends AbstractController
     {
         $this->equipeRepository = $equipeRepository;
     }
-    #[Route(path:"/", name:"accueil")]
+
+    #[Route(path: "/", name: "accueil")]
     public function accueil(Request $request): Response
     {
         return $this->render('base.html.twig');
-
     }
 
     #[Route('/jeu', name: 'app_jeu')]
     public function index(): Response
     {
+        $equipe = $this->equipeRepository->findOneBy([]); 
+
         return $this->render('jeu/index.html.twig', [
             'controller_name' => 'JeuController',
-            'equipe.nom' => null, 
+            'equipe' => $equipe,
         ]);
     }
 
     #[Route('/jeu/mur-enigme/{id}', name: 'app_choisir_enigme')]
-    public function choisirEnigme(int $id, EquipeRepository $equipeRepository): Response
+    public function choisirEnigme(int $id): Response
     {
-        $equipe = $equipeRepository->find($id);
+        $equipe = $this->equipeRepository->find($id);
 
-    if (!$equipe) {
-        throw $this->createNotFoundException("Équipe non trouvée");
-    }
+        if (!$equipe) {
+            throw $this->createNotFoundException("Équipe non trouvée");
+        }
 
-    return $this->render('jeu/mur-enigme.html.twig', [
-        'equipe_nom' => $equipe->getNom(),
-        'id' => $id,
-    ]);
+        return $this->render('jeu/mur-enigme.html.twig', [
+            'equipe' => $equipe->getNom(),
+            'id' => $id,
+        ]);
     }
 }

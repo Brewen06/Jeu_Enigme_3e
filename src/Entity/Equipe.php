@@ -21,6 +21,10 @@ class Equipe
     {
         return $this->nom;
     }
+    public function __construct()
+    {
+        $this->nom = "";
+    }
 
     public function getId(): ?int
     {
